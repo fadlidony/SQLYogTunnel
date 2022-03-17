@@ -1564,7 +1564,7 @@ define ( "XML_LIBXML2_TEST_QUERY", 8);
 /* version constant */
 /* You will need to change the version in processquery method too, where it shows: $versionheader = 'TunnelVersion:5.13.1' */
 
-define ( "tunnelversion", '8.8');
+define ( "tunnelversion", '11.5');
 define ( "tunnelversionstring", 'TunnelVersion:' );
 define ( "phpversionerror", 'PHP_VERSION_ERROR' );
 define ( "phpmoduleerror", 'PHP_MODULE_NOT_INSTALLED' );
@@ -1593,7 +1593,8 @@ if (!get_cfg_var("register_globals"))
 }
 
 /* we have to set the value to be off during runtime coz it does not work when magic_quotes_runtime = On is setin Php.ini */
-ini_set('magic_quotes_runtime', 0);
+if(get_magic_quotes_runtime())
+	set_magic_quotes_runtime (0);
 
 
 /* Check for the PHP_MYSQL/PHP_MYSQLI extension loaded */
